@@ -1,0 +1,32 @@
+{
+	"manifest_version": 3,
+	"name": "打开微信公众号文章地图",
+	"version": "1.0.0",
+	"description": "可以直接打开微信公众号文章内的地图，可以选择高德地图或者百度地图",
+	"icons":
+	{
+		"48": "img/rest.png"
+	},
+	"action": {
+		"default_icon": "img/rest.png"
+	},
+	"background":
+	{
+		"service_worker": "js/background.js"
+	},
+	"permissions": [
+		"tabs",
+    	"activeTab",
+		"webNavigation",		
+    	"https://mp.weixin.qq.com/"
+	],
+	"content_scripts": 
+	[
+		{
+			"matches": ["https://mp.weixin.qq.com/s/*"],
+			"js": ["js/openmap.js"],
+			"css": ["css/openmap.css"],
+			"run_at": "document_start"
+		}
+	]
+}
